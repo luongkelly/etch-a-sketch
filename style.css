@@ -44,11 +44,39 @@ button {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+#color.active {
+    background-color: #97bac8;
+    color: white;
+}
+
+#rainbow.active {
+    background-color: #97bac8;
+    color: white;
+}
+
+#eraser.active {
+    background-color: #97bac8;
+    color: white;
+}
+
+#clear.active {
+    background-color: #97bac8;
+    color: white;
+}
+
 .grid {
     display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     width: 600px;
     height: 600px;
     background-color: rgb(255, 255, 255);
+    margin: 20px;
+}
+
+.grid-cell {
+    border: 1px solid #e0e0e0;
+    box-sizing: border-box;
 }
 
 .copyright {
