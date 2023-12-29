@@ -9,6 +9,7 @@ const grid = document.getElementById('grid');
 
 let currentColor = '#333333';
 let currentSize = 16;
+let eraserColor = '#FFFFFF';
 let eraserMode = false;
 
 function setColor(newColor) {
@@ -17,7 +18,9 @@ function setColor(newColor) {
 
 eraser.addEventListener('click', () => {
     eraserMode = true;
-    eraser.classList.add('active');
+    if (eraserMode) {
+        eraser.classList.add('active');
+    }
 })
 
 for (let i = 0; i < currentSize * currentSize; i++) {
@@ -28,7 +31,7 @@ for (let i = 0; i < currentSize * currentSize; i++) {
             gridCell.style.backgroundColor = currentColor;
         }
         else {
-            gridCell.style.backgroundColor = rgb(255, 255, 255);
+            gridCell.style.backgroundColor = eraserColor;
         }
     })
     grid.appendChild(gridCell);
