@@ -7,8 +7,9 @@ const size = document.getElementById('size');
 const slider = document.getElementById('slider');
 const grid = document.getElementById('grid');
 
-let currentColor = '#333333';
+let currentColor = '#C2A1CE';
 let currentSize = 16;
+let currentMode = colorBtn;
 let eraserColor = '#FFFFFF';
 let eraserMode = false;
 let rainbowMode = false;
@@ -24,28 +25,31 @@ function setSize(newSize) {
     currentSize = newSize;
 }
 
-eraser.addEventListener('click', () => {
-    eraserMode = true;
-    rainbowMode = false;
-    eraser.classList.add('active');
-    colorBtn.classList.remove('active');
-    rainbow.classList.remove('active');
-})
+function setMode(newMode) {
+    if (currentMode) {
+        currentMode.classList.remove('active');
+    }
+    newMode.classList.add('active');
+    currentMode = newMode;
+}
 
+color.oninput = (e) => setColor(e.target.value);
 colorBtn.addEventListener('click', () => {
     eraserMode = false;
     rainbowMode = false;
-    colorBtn.classList.add('active');
-    eraser.classList.remove('active');
-    rainbow.classList.remove('active');
+    setMode(colorBtn);
 })
 
 rainbow.addEventListener('click', () => {
     rainbowMode = true;
     eraserMode = false;
-    rainbow.classList.add('active');
-    colorBtn.classList.remove('active');
-    eraser.classList.remove('active');
+    setMode(rainbow);
+})
+
+eraser.addEventListener('click', () => {
+    eraserMode = true;
+    rainbowMode = false;
+    setMode(eraser);
 })
 
 clear.addEventListener('click', () => {
@@ -89,5 +93,3 @@ function createGrid(size) {
 }
 
 createGrid(currentSize);
-
-color.oninput = (e) => setColor(e.target.value);
