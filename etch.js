@@ -70,22 +70,32 @@ function createGrid(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
+    let isMouseDown = false; 
+        document.addEventListener('mouseup', () => {
+            isMouseDown = false; 
+        })
+
+        document.addEventListener('mousedown', () => {
+            isMouseDown = true;
+        });
+
     for (let i = 0; i < currentSize * currentSize; i++) {
         colorBtn.classList.add('active');
         const gridCell = document.createElement('div');
         gridCell.classList.add('grid-cell');
+
         gridCell.addEventListener('mouseover', () => {
-            if (!eraserMode && !rainbowMode) {
-                gridCell.style.backgroundColor = currentColor;
-            }
-            else if (rainbowMode && !eraserMode) {
-                const r = Math.floor(Math.random() * 256)
-                const g = Math.floor(Math.random() * 256)
-                const b = Math.floor(Math.random() * 256)
-                gridCell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
-            }
-            else {
-                gridCell.style.backgroundColor = eraserColor;
+            if (isMouseDown) {
+                if (!eraserMode && !rainbowMode) {
+                    gridCell.style.backgroundColor = currentColor;
+                } else if (rainbowMode && !eraserMode) {
+                    const r = Math.floor(Math.random() * 256);
+                    const g = Math.floor(Math.random() * 256);
+                    const b = Math.floor(Math.random() * 256);
+                    gridCell.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+                } else {
+                    gridCell.style.backgroundColor = eraserColor;
+                }
             }
         })
         grid.appendChild(gridCell);

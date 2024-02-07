@@ -2,10 +2,17 @@ html {
     background-color: #E3F4F4; 
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .header {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     color: #97bac8;
     font-size: 30px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -13,8 +20,8 @@ html {
 
 .container {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: center;
+    align-items: center; 
 }
 
 .controls {
@@ -22,7 +29,6 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 300px;
     gap: 30px;
 }
 
@@ -60,6 +66,7 @@ button {
 }
 
 .grid {
+    flex: 1; 
     display: grid;
     width: 600px;
     height: 600px;
